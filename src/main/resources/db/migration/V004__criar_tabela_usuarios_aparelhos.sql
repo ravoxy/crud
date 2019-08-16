@@ -1,7 +1,7 @@
 create table usuarios_aparelhos
 (
-    id_usuario      bigserial not null,
-    id_aparelhos    bigserial not null
+    id_usuario      bigint not null,
+    id_aparelhos    bigint not null
 );
 
 ALTER TABLE usuarios_aparelhos

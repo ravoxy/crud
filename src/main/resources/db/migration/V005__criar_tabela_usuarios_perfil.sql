@@ -1,7 +1,7 @@
 create table usuarios_perfil
 (
-    id_usuario      bigserial not null,
-    id_perfil    bigserial not null
+    id_usuario      bigint not null,
+    id_perfil       bigint not null
 );
 
 ALTER TABLE usuarios_perfil

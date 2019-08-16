@@ -4,11 +4,16 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -46,4 +51,13 @@ public class Usuarios {
 
     @Column(name = "cod_pessoa")
     private Long codigoPessoa;
+
+    @ManyToMany
+    @JoinTable(name = "usuarios_perfil", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_perfil"))
+    private List<Perfil> perfis;
+
+    @ManyToMany
+    @JoinTable(name = "usuarios_aparelhos", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_aparelhos"))
+    private List<Aparelhos> aparelhos;
+
 }
