@@ -27,7 +27,7 @@ public class SwaggerConfigurations {
 
         return new ApiInfoBuilder()
                 .title("Api-CRUD")
-                .description("Api para CRUD.")
+                .description("Api CRUD.")
                 .version("1.0");
     }
 }
