@@ -14,10 +14,10 @@ public class RecursoCriadoEvent extends ApplicationEvent implements Serializable
 
     private Long id;
 
-    public RecursoCriadoEvent(Object source, HttpServletResponse response, Long codigo) {
+    public RecursoCriadoEvent(Object source, HttpServletResponse response, Long id) {
         super(source);
         this.response = response;
-        this.id = codigo;
+        this.id = id;
     }
 
 }
