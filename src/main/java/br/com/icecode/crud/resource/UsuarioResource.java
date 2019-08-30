@@ -2,6 +2,7 @@ package br.com.icecode.crud.resource;
 
 import br.com.icecode.crud.event.RecursoCriadoEvent;
 import br.com.icecode.crud.model.Usuario;
+import br.com.icecode.crud.model.dto.UsuarioDTO;
 import br.com.icecode.crud.repository.UsuarioRepository;
 import br.com.icecode.crud.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,8 @@ public class UsuarioResource {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> criar(@Valid @RequestBody Usuario usuario, HttpServletResponse response) {
-        Usuario usuarioSalvo = usuarioService.salvar(usuario);
+    public ResponseEntity<Usuario> criar(@Valid @RequestBody UsuarioDTO usuario, HttpServletResponse response) {
+        Usuario usuarioSalvo = usuarioService.salvar(usuario.getUsuario());
         publisher.publishEvent(new RecursoCriadoEvent(this, response, usuarioSalvo.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioSalvo);
     }
@@ -56,9 +57,9 @@ public class UsuarioResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @Valid @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @Valid @RequestBody UsuarioDTO usuario) {
         try {
-            Usuario usuarioSalvo = usuarioService.atualizar(id, usuario);
+            Usuario usuarioSalvo = usuarioService.atualizar(id, usuario.getUsuario());
             return ResponseEntity.ok(usuarioSalvo);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
