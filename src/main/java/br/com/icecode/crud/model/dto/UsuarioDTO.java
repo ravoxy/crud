@@ -9,6 +9,9 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UsuarioDTO {
 
@@ -69,9 +72,11 @@ public class UsuarioDTO {
         usuario.setStatusUsuario(this.statusUsuario);
         usuario.setCodigoPessoa(this.codigoPessoa);
         if (this.perfil != null)
+            usuario.setPerfis(new HashSet<>());
             usuario.getPerfis().add(this.perfil);
 
         if (this.aparelho != null)
+            usuario.setAparelhos(new HashSet<>());
             usuario.getAparelhos().add(this.aparelho);
         return usuario;
     }

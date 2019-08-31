@@ -1,11 +1,12 @@
 package br.com.icecode.crud.service;
 
+import br.com.icecode.crud.model.Usuario;
+import br.com.icecode.crud.repository.UsuarioRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.icecode.crud.model.Usuario;
-import br.com.icecode.crud.repository.UsuarioRepository;
+import javax.transaction.Transactional;
 
 @Service
 public class UsuarioService {
@@ -17,10 +18,12 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
+    @Transactional
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
+    @Transactional
     public Usuario atualizar(Long id, Usuario usuario) {
         Usuario usuarioSalvo = buscarUsuarioExistente(id);
         BeanUtils.copyProperties(usuario, usuarioSalvo, "id");
