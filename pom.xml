@@ -17,7 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<!-- Swagger -->
-		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<springfox-swagger.version>2.10.0</springfox-swagger.version>
 		<!-- Apache Commons -->
 		<apache-commons.version>3.4</apache-commons.version>
 	</properties>
